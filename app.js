@@ -8,8 +8,9 @@ var cheerio = require('cheerio');
 // var cli = new twilio.Client("AC8291e1a6d67aafe528bcdc77f25f3e4f","c6021b739324a11dbedcfe5129eae946");
 
 // app.use(cli.middleware());
-app.listen(3000, function() { console.log("server running on port 3000" ); });
 
+
+app.set('port', process.env.PORT || 5000);
 
 
 app.get('/api/user/:username', function(req,res) {
@@ -33,3 +34,7 @@ app.get('/api/anime/:link', function(req, res) {
 		}
 	});
 }); 
+
+app.listen(app.get('port'), function() { 
+	console.log('Node app is running on port', app.get('port')); 
+});
